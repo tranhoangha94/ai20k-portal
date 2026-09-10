@@ -1,0 +1,324 @@
+:root{
+  --bg:#F5F3EE;
+  --surface:#FFFFFF;
+  --surface-2:#FBF9F5;
+  --ink:#182333;
+  --ink-soft:#5B6472;
+  --ink-faint:#8A93A3;
+  --accent:#B5872F;
+  --accent-ink:#7A5A1E;
+  --accent-tint:#B5872F1A;
+  --border:#E4DFD3;
+  --focus:#7A5A1E;
+  --shadow: 0 1px 2px rgba(24,35,51,0.04), 0 8px 24px rgba(24,35,51,0.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#10151F;
+    --surface:#1A2130;
+    --surface-2:#151C29;
+    --ink:#ECEEF3;
+    --ink-soft:#A7AFBE;
+    --ink-faint:#717A8B;
+    --accent:#D9AE5C;
+    --accent-ink:#F0CD8C;
+    --accent-tint:#D9AE5C24;
+    --border:#2B3345;
+    --focus:#D9AE5C;
+    --shadow: 0 1px 2px rgba(0,0,0,0.2), 0 12px 32px rgba(0,0,0,0.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10151F;
+  --surface:#1A2130;
+  --surface-2:#151C29;
+  --ink:#ECEEF3;
+  --ink-soft:#A7AFBE;
+  --ink-faint:#717A8B;
+  --accent:#D9AE5C;
+  --accent-ink:#F0CD8C;
+  --accent-tint:#D9AE5C24;
+  --border:#2B3345;
+  --focus:#D9AE5C;
+  --shadow: 0 1px 2px rgba(0,0,0,0.2), 0 12px 32px rgba(0,0,0,0.35);
+}
+
+*{box-sizing:border-box;}
+html,body{padding:0;margin:0;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-inter),ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  padding:56px 20px 40px;
+}
+.page{
+  width:100%;
+  max-width:860px;
+}
+.top-row{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+}
+.theme-toggle{
+  flex-shrink:0;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:999px;
+  padding:4px;
+  box-shadow:var(--shadow);
+}
+.theme-toggle button{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:30px;
+  height:30px;
+  border:none;
+  border-radius:999px;
+  background:transparent;
+  color:var(--ink-faint);
+  cursor:pointer;
+  transition:background .15s ease, color .15s ease;
+}
+.theme-toggle button svg{width:16px;height:16px;}
+.theme-toggle button.active{
+  background:var(--accent-tint);
+  color:var(--accent-ink);
+}
+.theme-toggle button:focus-visible{
+  outline:2px solid var(--focus);
+  outline-offset:2px;
+}
+.eyebrow{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+  color:var(--accent-ink);
+  margin:0 0 10px;
+}
+h1{
+  font-family:var(--font-newsreader),ui-serif,Georgia,serif;
+  font-optical-sizing:auto;
+  font-weight:500;
+  font-size:clamp(30px,4.4vw,42px);
+  line-height:1.12;
+  letter-spacing:-0.01em;
+  text-wrap:balance;
+  margin:0 0 12px;
+  color:var(--ink);
+}
+.lede{
+  font-size:15.5px;
+  line-height:1.55;
+  color:var(--ink-soft);
+  max-width:56ch;
+  margin:0 0 36px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:16px;
+}
+
+.tile{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:22px 22px 20px;
+  text-decoration:none;
+  color:inherit;
+  cursor:pointer;
+  text-align:left;
+  font:inherit;
+  box-shadow:var(--shadow);
+  transition:transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+.tile:hover{
+  transform:translateY(-2px);
+  border-color:var(--accent);
+}
+.tile:focus-visible{
+  outline:2px solid var(--focus);
+  outline-offset:2px;
+}
+.tile-icon{
+  width:42px;
+  height:42px;
+  border-radius:11px;
+  background:var(--accent-tint);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--accent-ink);
+  flex-shrink:0;
+}
+.tile-icon svg{width:22px;height:22px;}
+.tile-title{
+  font-size:16.5px;
+  font-weight:600;
+  color:var(--ink);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.tile-title .arrow{
+  color:var(--ink-faint);
+  font-size:15px;
+  transition:transform .15s ease, color .15s ease;
+}
+.tile:hover .tile-title .arrow{
+  color:var(--accent-ink);
+  transform:translateX(2px);
+}
+.tile-desc{
+  font-size:13.5px;
+  line-height:1.5;
+  color:var(--ink-soft);
+  margin-top:-6px;
+}
+.tile-meta{
+  font-size:12px;
+  line-height:1.5;
+  color:var(--ink-faint);
+  padding-top:10px;
+  border-top:1px solid var(--border);
+  margin-top:auto;
+}
+.tile-meta b{color:var(--ink-soft); font-weight:600;}
+
+.mail-panel{
+  grid-column:1 / -1;
+  overflow:hidden;
+  max-height:0;
+  opacity:0;
+  transition:max-height .22s ease, opacity .18s ease;
+}
+.mail-panel.open{
+  max-height:220px;
+  opacity:1;
+}
+.mail-panel-inner{
+  background:var(--surface-2);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:8px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:8px;
+}
+.mail-option{
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  padding:14px 16px;
+  border-radius:11px;
+  text-decoration:none;
+  color:inherit;
+  transition:background .15s ease;
+}
+.mail-option:hover{background:var(--accent-tint);}
+.mail-option:focus-visible{outline:2px solid var(--focus); outline-offset:-2px;}
+.mail-option-label{font-size:13.5px;font-weight:600;color:var(--ink);}
+.mail-option-sub{font-size:12px;color:var(--ink-faint);}
+.mail-option-note{font-size:12px;font-weight:500;color:var(--accent-ink);margin-top:2px;}
+
+.section-title{
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.03em;
+  color:var(--ink-soft);
+  margin:40px 0 12px;
+}
+
+.wifi-list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.wifi-item{
+  display:flex;
+  gap:14px;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:16px 18px;
+  box-shadow:var(--shadow);
+}
+.wifi-icon{
+  width:36px;
+  height:36px;
+  border-radius:10px;
+  background:var(--accent-tint);
+  color:var(--accent-ink);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+.wifi-icon svg{width:19px;height:19px;}
+.wifi-body{display:flex; flex-direction:column; gap:3px;}
+.wifi-name{
+  font-size:14.5px;
+  font-weight:600;
+  color:var(--ink);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.wifi-badge{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.02em;
+  color:var(--accent-ink);
+  background:var(--accent-tint);
+  padding:2px 8px;
+  border-radius:999px;
+}
+.wifi-desc{
+  font-size:13px;
+  line-height:1.5;
+  color:var(--ink-soft);
+  margin:0;
+}
+.wifi-desc b{color:var(--ink); font-weight:600;}
+.wifi-pass{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:12.5px;
+  background:var(--surface-2);
+  border:1px solid var(--border);
+  border-radius:6px;
+  padding:1px 6px;
+  color:var(--ink);
+}
+.wifi-note{
+  font-size:12px;
+  color:var(--ink-faint);
+  margin:0;
+}
+
+footer{
+  margin-top:40px;
+  padding-top:20px;
+  border-top:1px solid var(--border);
+  font-size:12px;
+  color:var(--ink-faint);
+  line-height:1.6;
+}
+
+@media (prefers-reduced-motion:reduce){
+  .tile, .mail-panel, .tile-title .arrow{transition:none;}
+}
