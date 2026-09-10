@@ -119,21 +119,7 @@ export default function Home() {
           <span className="tile-meta">Đăng nhập bằng <b>GitHub</b> đã đăng ký với chương trình</span>
         </a>
 
-        <a className="tile" href="https://discord.gg/PWStBWsXz" target="_blank" rel="noopener noreferrer">
-          <span className="tile-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M6 8.5C8 7 16 7 18 8.5c1.2 2 1.6 6 1 9-1.6 1.2-3.2 1.8-4.6 2l-.7-1.3M6 8.5c-1.2 2-1.6 6-1 9 1.6 1.2 3.2 1.8 4.6 2l.7-1.3" />
-              <path
-                d="M9 14.2c-.4-.3-.6-.7-.6-1.2 0-.9.9-1.6 2-1.6s2 .7 2 1.6-.9 1.6-2 1.6c-.5 0-1-.2-1.4-.4Zm4.6 0c-.4-.3-.6-.7-.6-1.2 0-.9.9-1.6 2-1.6s2 .7 2 1.6-.9 1.6-2 1.6c-.5 0-1-.2-1.4-.4Z"
-                fill="currentColor"
-                stroke="none"
-              />
-            </svg>
-          </span>
-          <span className="tile-title">Discord <span className="arrow">↗</span></span>
-          <span className="tile-desc">Kênh trao đổi của chương trình</span>
-          <span className="tile-meta">Dành cho lớp <b>Level 3–4</b></span>
-        </a>
+        {/* Discord tạm ẩn: link mời sai, chờ link đúng */}
 
         <button
           type="button"
