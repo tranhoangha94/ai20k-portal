@@ -119,6 +119,19 @@ export default function Home() {
           <span className="tile-meta">Đăng nhập bằng <b>GitHub</b> đã đăng ký với chương trình</span>
         </a>
 
+        <a className="tile" href="/ai20k-notebook-onboarding.pdf" download>
+          <span className="tile-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 4v11.5" />
+              <path d="m7.5 11.5 4.5 4.5 4.5-4.5" />
+              <path d="M5 19.5h14" />
+            </svg>
+          </span>
+          <span className="tile-title">NoteBook học viên <span className="arrow">⬇</span></span>
+          <span className="tile-desc">Hướng dẫn onboarding — 7 bước từ lúc nhận lời mời đến khi chạy được AI log</span>
+          <span className="tile-meta">PDF · Cohort 4</span>
+        </a>
+
         {/* Discord tạm ẩn: link mời sai, chờ link đúng */}
 
         <button
