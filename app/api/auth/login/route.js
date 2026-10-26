@@ -1,12 +1,17 @@
 import { handle, json, readJson, str } from "@/lib/api";
 import { setSession } from "@/lib/auth";
-import { mutate, readDb } from "@/lib/db";
+import { mutate, readDb, storageInfo } from "@/lib/db";
 import { safeEqual, verifyPassword } from "@/lib/password";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const FAIL = "Sai tài khoản hoặc mật khẩu.";
 
 export const POST = handle(async (req) => {
+  // On Vercel every function has its own /tmp, so without a shared store the session cookie
+  // minted here would never validate on the next page and login would silently loop.
+  if (!storageInfo.persistent) {
+    return json({ error: "Máy chủ chưa gắn cơ sở dữ liệu (Upstash Redis) nên chưa đăng nhập được. Xem hướng dẫn trong README." }, 503);
+  }
   const body = await readJson(req);
   const username = str(body.username, 120);
   const password = String(body.password ?? "").slice(0, 200);

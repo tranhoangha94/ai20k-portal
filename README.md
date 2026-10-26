@@ -24,7 +24,7 @@ Mở http://localhost:3000. Dữ liệu lưu ở `data/ai20k-db.json` (đã đư
 
 | Biến | Dùng để |
 | --- | --- |
-| `KV_REST_API_URL`, `KV_REST_API_TOKEN` (hoặc `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`) | **Bắt buộc để lưu dữ liệu bền vững.** Thêm Upstash Redis từ Vercel → Storage; Vercel tự điền các biến này. Thiếu thì dữ liệu chỉ lưu tạm và mất khi server khởi động lại. |
+| `KV_REST_API_URL`, `KV_REST_API_TOKEN` (hoặc `UPSTASH_REDIS_REST_URL`, `UPSTASH_REDIS_REST_TOKEN`) | **Bắt buộc để lưu dữ liệu bền vững.** Thêm Upstash Redis từ Vercel → Storage; Vercel tự điền các biến này. **Thiếu thì không đăng nhập được trên Vercel**, vì mỗi function có thư mục `/tmp` riêng và không chia sẻ dữ liệu cho nhau. |
 | `ADMIN_USER`, `ADMIN_PASSWORD` | Tài khoản admin ban đầu (chỉ đọc khi tạo dữ liệu lần đầu). |
 | `SESSION_SECRET` | Khoá ký cookie đăng nhập. Không đặt thì tự sinh và lưu cùng dữ liệu. |
 
