@@ -17,7 +17,7 @@ export default async function LoginPage() {
         <div className="card login-card">
           <h1>Đăng nhập</h1>
           <p className="hint" style={{ marginBottom: 20 }}>
-            Học viên dùng <b>MSSV</b> hoặc <b>email VinUni</b>. Mật khẩu mặc định là <b>mã số sinh viên</b> — hãy đổi sau khi đăng nhập.
+            Học viên dùng <b>MSSV</b> hoặc <b>email VinUni</b>, mật khẩu mặc định là <b>mã số sinh viên</b> (hãy đổi sau khi đăng nhập). Quản trị viên nhập tên tài khoản admin vào cùng ô này.
           </p>
           <LoginForm />
         </div>

@@ -29,7 +29,7 @@ export default function LoginForm() {
   return (
     <form className="form" onSubmit={submit}>
       <div className="field">
-        <label htmlFor="username">MSSV hoặc email</label>
+        <label htmlFor="username">MSSV, email hoặc tài khoản admin</label>
         <input id="username" name="username" className="input" autoComplete="username" autoCapitalize="none" required autoFocus />
       </div>
       <div className="field">
