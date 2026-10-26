@@ -9,8 +9,8 @@ const FAIL = "Sai tài khoản hoặc mật khẩu.";
 export const POST = handle(async (req) => {
   // On Vercel every function has its own /tmp, so without a shared store the session cookie
   // minted here would never validate on the next page and login would silently loop.
-  if (!storageInfo.persistent) {
-    return json({ error: "Máy chủ chưa gắn cơ sở dữ liệu (Upstash Redis) nên chưa đăng nhập được. Xem hướng dẫn trong README." }, 503);
+  if (!storageInfo.shared) {
+    return json({ error: "Máy chủ đang chạy kiểu serverless mà chưa gắn kho dữ liệu dùng chung (Supabase hoặc Upstash Redis) nên chưa đăng nhập được. Xem README." }, 503);
   }
   const body = await readJson(req);
   const username = str(body.username, 120);

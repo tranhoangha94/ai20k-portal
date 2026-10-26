@@ -17,8 +17,7 @@ export default function OverviewTab({ data, goTo }) {
     <div className="stack">
       {!data.storage.persistent && (
         <div className="alert bad">
-          <b>Dữ liệu chưa được lưu bền vững.</b> Máy chủ đang lưu tạm nên học viên, lịch và điểm sẽ mất khi Vercel khởi động lại. Hãy thêm Upstash Redis (Vercel → Storage) để có biến{" "}
-          <code>KV_REST_API_URL</code> và <code>KV_REST_API_TOKEN</code>.
+          <b>Dữ liệu chưa được lưu bền vững.</b> Dữ liệu đang nằm trên ổ tạm của máy chủ nên sẽ mất mỗi khi deploy lại. Trên Railway: thêm một <b>Volume</b> vào service (Railway tự đặt biến <code>RAILWAY_VOLUME_MOUNT_PATH</code>). Cách khác: dùng Supabase (<code>SUPABASE_URL</code>, <code>SUPABASE_SERVICE_ROLE_KEY</code>) hoặc Upstash Redis.
         </div>
       )}
       {data.admin.isDefault && (
