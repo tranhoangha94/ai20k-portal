@@ -34,7 +34,7 @@ Railway chạy một server liên tục nên dữ liệu dùng chung giữa mọ
 
 Dữ liệu lưu thành một bản ghi JSON trong bảng `kv` (không tách bảng riêng cho từng loại dữ liệu).
 
-1. Tạo project Supabase, vào **SQL Editor** chạy:
+1. Tạo project Supabase. Nếu đã bật tích hợp GitHub (Integrations → GitHub, Deploy to production), file `supabase/migrations/` trong repo tự tạo bảng khi push lên `main`. Nếu không, vào **SQL Editor** chạy:
 
    ```sql
    create table if not exists kv (key text primary key, value text not null);
@@ -42,7 +42,7 @@ Dữ liệu lưu thành một bản ghi JSON trong bảng `kv` (không tách b�
    ```
 
    Bật RLS mà không tạo policy nghĩa là khoá `anon` công khai không đọc được dữ liệu học viên.
-2. Lấy **Project URL** và khoá **service_role** (Settings → API Keys). Đặt `SUPABASE_URL` và `SUPABASE_SERVICE_ROLE_KEY` cho service. Khoá service_role chỉ để ở server, không bao giờ đặt trong biến `NEXT_PUBLIC_*`.
+2. Lấy **Project URL** và khoá **secret** hoặc **service_role** (Settings → API Keys). Đặt `SUPABASE_URL` và `SUPABASE_SERVICE_ROLE_KEY` cho service. Khoá service_role chỉ để ở server, không bao giờ đặt trong biến `NEXT_PUBLIC_*`.
 
 Gói Free của Supabase tự tạm dừng project sau 1 tuần không có truy cập.
 
