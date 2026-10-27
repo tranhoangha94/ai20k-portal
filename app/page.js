@@ -3,7 +3,7 @@ import Icon from "@/components/Icon";
 import MailTile from "@/components/MailTile";
 import SiteNav from "@/components/SiteNav";
 import { getSession } from "@/lib/auth";
-import { readDb } from "@/lib/db";
+import { fallbackDb, readDb } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
 
@@ -32,8 +32,14 @@ function formatPostDate(iso) {
 }
 
 export default async function Home() {
-  const db = await readDb();
-  const session = await getSession(db);
+  let db;
+  try {
+    db = await readDb();
+  } catch (err) {
+    console.error(err);
+    db = fallbackDb();
+  }
+  const session = await getSession(db).catch(() => null);
   const links = db.links.filter((l) => l.visible && l.url);
   const posts = [...db.posts]
     .sort((a, b) => Number(b.pinned) - Number(a.pinned) || b.createdAt.localeCompare(a.createdAt))
