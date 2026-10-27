@@ -268,6 +268,8 @@ button,input,select,textarea{font:inherit;color:inherit;}
 .error{font-size:13.5px;color:var(--bad);font-weight:600;}
 .login-card{margin-top:64px;}
 .login-card h1{font-size:32px;font-weight:800;letter-spacing:-.03em;margin-bottom:6px;}
+.demo-login{margin-top:22px;padding-top:18px;border-top:1px dashed var(--line);display:grid;gap:10px;}
+.demo-buttons{display:grid;gap:8px;}
 
 /* ---------- Student dashboard ---------- */
 .greet{padding:48px 0 8px;}

@@ -1,6 +1,7 @@
 import { handle, json, readJson, str } from "@/lib/api";
 import { setSession } from "@/lib/auth";
 import { mutate, readDb, storageInfo } from "@/lib/db";
+import { DEMO_STUDENT, ensureDemoStudent } from "@/lib/demo";
 import { safeEqual, verifyPassword } from "@/lib/password";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -17,8 +18,13 @@ export const POST = handle(async (req) => {
   const password = String(body.password ?? "").slice(0, 200);
   if (!username || !password) return json({ error: "Nhập tài khoản và mật khẩu." }, 400);
 
-  const db = await readDb();
+  let db = await readDb();
   const key = username.toLowerCase();
+
+  if (key === DEMO_STUDENT.id.toLowerCase() && !db.students.some((s) => s.id === DEMO_STUDENT.id)) {
+    await mutate(ensureDemoStudent);
+    db = await readDb();
+  }
 
   if (key === db.admin.user.toLowerCase()) {
     if (!verifyPassword(password, db.admin.passwordHash)) {
